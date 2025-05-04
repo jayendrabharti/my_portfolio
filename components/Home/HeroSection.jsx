@@ -3,6 +3,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import { cn } from "@/libs/cn";
 import { anurati } from "@/utils/fonts";
 import Image from "next/image";
+import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
 export default function HeroSection() {
@@ -38,9 +39,12 @@ export default function HeroSection() {
                 </p>
 
                 <div className="mt-6 flex justify-start gap-4">
-                    <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    <Link
+                        href={'/contact'} 
+                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    >
                         Contact Me
-                    </button>
+                    </Link>
                     <button className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
                         View my Work
                     </button>
@@ -57,6 +61,7 @@ export default function HeroSection() {
                     className={"cursor-pointer w-20 md:w-40 ml-1 md:ml-auto rounded-xl"}
                 />
             </div>
+
         </section>
     );
 }

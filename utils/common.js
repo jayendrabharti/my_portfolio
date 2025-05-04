@@ -1,4 +1,4 @@
-export const formatTimestamp = (mongoTimestamp) => {
+export const formatTimestamp = (mongoTimestamp,format = 1) => {
     if (!mongoTimestamp) return null;
 
     const date = new Date(mongoTimestamp);
@@ -10,6 +10,9 @@ export const formatTimestamp = (mongoTimestamp) => {
     const ampm = hours >= 12 ? 'pm' : 'am';
     hours = hours % 12 || 12; // Convert to 12-hour format and handle midnight (0)
 
+    if(format == 2){
+        return `${month} ${day}, ${year}`;
+    }
     return `${day} ${month} ${year} • ${hours}:${minutes} ${ampm}`;
 };
 

@@ -32,3 +32,43 @@
         scrollbar-width: none; /* Firefox */
     }
 }
+
+.ql-container.ql-snow.ql-disabled{
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.ql-disabled>.ql-editor{
+    border: none;
+    padding: 0;
+    margin: 0;
+    @apply text-[16px]
+}
+.ql-disabled .ql-ui{
+    @apply hidden
+}
+
+.ql-align-center {
+    text-align: center;
+  }
+  
+  .ql-align-right {
+    text-align: right;
+  }
+  
+  .ql-align-left {
+    text-align: left;
+  }
+  
+  .ql-align-justify {
+    text-align: justify;
+  }
+  
+  .ql-editor img {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .ql-video{
+    @apply w-full px-4 aspect-video
+  }

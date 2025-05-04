@@ -1,24 +1,30 @@
 "use client";
+import hljs from "highlight.js";
+import "highlight.js/styles/default.css";
 import Quill from 'quill';
 import "quill/dist/quill.snow.css";
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.bubble.css";
+
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 
 const TOOLBAR_OPTIONS = [
-  [{ header: [1, 2, 3, 4, 5, 6, false] }],
   [{ font: [] }],
-  [{ list: "ordered" }, { list: "bullet" }],
-  ["bold", "italic", "underline"],
-  [{ color: [] }, { background: [] }],
+  [{ header: [1, 2, 3, 4, 5, 6, false] }],
+  ["bold", "italic", "underline", "strike", "code"],
   [{ script: "sub" }, { script: "super" }],
+  [{ color: [] }, { background: [] }],
+  [{ list: "ordered" }, { list: "bullet" }],
+  [{ indent: "-1" }, { indent: "+1" }],
+  [{ direction: "rtl" }],
   [{ align: [] }],
-  ["image", "blockquote", "code-block"],
+  ["link", "image","video" ,"blockquote", "code-block"],
   ["clean"],
-]
+];
 
 export default function BlogEditor({content,setContent}){
   const [quill, setQuill] = useState();
-  
   
   useEffect(() => {
     if (!quill) return;
@@ -42,7 +48,10 @@ export default function BlogEditor({content,setContent}){
     container.append(editor);
     const q = new Quill(editor, {
       theme: "snow",
-      modules: { toolbar: TOOLBAR_OPTIONS },
+      modules: { 
+        syntax: { hljs },
+        toolbar: TOOLBAR_OPTIONS 
+      },
     });
     q.disable();
     q.setText("Loading...");
@@ -52,12 +61,12 @@ export default function BlogEditor({content,setContent}){
   },[]);
 
 
-      return(
-        <div 
-          id='container'
-          className='light'
-          ref={containerRef}
-        ></div>
-      )
+  return(
+    <div 
+      id='container'
+      className='container'
+      ref={containerRef}
+    ></div>
+  )
 
 }

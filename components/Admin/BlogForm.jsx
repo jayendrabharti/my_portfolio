@@ -16,7 +16,8 @@ import {
     Eye,
     MessageSquare,
     UploadIcon,
-    LoaderCircle
+    LoaderCircle,
+    XIcon
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 const BlogEditor = dynamic(() => import('@/components/Blogs/BlogEditor'), { ssr: false });
@@ -25,7 +26,7 @@ const defaultInitialValues = {
     title: '',
     slug: '',
     content: null,
-    coverImage: '',
+    coverImage: null,
     tags: [],
     datetime: new Date().toISOString().split('T')[0],
     views: 0
@@ -80,6 +81,7 @@ export default function BlogForm({ onSubmit, initialValues = defaultInitialValue
 
             {blogImageURL 
             ? 
+            <div className='relative'>
                 <Image
                     src={blogImageURL}
                     alt='paymentss'
@@ -87,6 +89,11 @@ export default function BlogForm({ onSubmit, initialValues = defaultInitialValue
                     height={300}
                     className='mx-auto w-full'
                 />
+                <XIcon
+                    onClick={()=>setBlogImageURL(null)} 
+                    className='bg-black text-white rounded-full size-10 p-1 absolute top-0 right-0 translate-x-1/2 -translate-y-1/2'
+                />
+            </div>
             :
             <div className="relative">
                 <div className='relative max-w-md h-48 mx-auto'>
