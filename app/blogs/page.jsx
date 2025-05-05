@@ -3,7 +3,8 @@ import BlogCard from "@/components/Blogs/BlogCard";
 import { GetBlogs } from "@/actions/blogs";
 import RevealHero from "@/components/animations/RevealHero";
 
-export const revalidate = 60;
+// export const revalidate = 60;
+export const dynamic = 'force-dynamic'
 
 export default async function Blogs(){
 

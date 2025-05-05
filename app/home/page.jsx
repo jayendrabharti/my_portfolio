@@ -5,7 +5,8 @@ import TechStack from "@/components/TechStack";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
-export const revalidate = 60;
+// export const revalidate = 60;
+export const dynamic = 'force-dynamic'
 
 export default async function Home() {
 return(<>

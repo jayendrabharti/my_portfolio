@@ -16,6 +16,8 @@ export async function generateStaticParams() {
     slug: blog.slug,
   }))
 }
+// export const revalidate = 60;
+export const dynamic = 'force-dynamic'
 
 export default async function Blog({params}) {
 

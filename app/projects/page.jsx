@@ -3,7 +3,8 @@ import { GetProjects } from "@/actions/projects";
 import ProjectCard from "@/components/Projects/ProjectCard";
 import RevealHero from "@/components/animations/RevealHero";
 
-export const revalidate = 60;
+// export const revalidate = 60;
+export const dynamic = 'force-dynamic'
 
 export default async function Projects(){
 
