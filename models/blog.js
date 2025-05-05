@@ -14,6 +14,10 @@ const BlogSchema = new Schema({
     type: Schema.Types.Mixed,
     required: [true, "Blog content is required!"],
   },
+  displayContent: {
+    type: String,
+    default: "",
+  },
   coverImage: {
     type: String,
     default: "",

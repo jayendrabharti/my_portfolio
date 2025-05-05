@@ -1,48 +1,12 @@
-"use client";
 import { cn } from "@/libs/cn"
-import { useState, useEffect } from "react";
-import { LoaderCircleIcon } from "lucide-react";
 import BlogCard from "@/components/Blogs/BlogCard";
 import { GetBlogs } from "@/actions/blogs";
-import { useRouter } from "next/navigation";
-export default function Blogs(){
 
-    const router = useRouter();
-    const [blogs,setBlogs] = useState(null);
-    const [loading,setLoading] = useState(true);
-    const [error,setError] = useState(null);
+export const dynamic = 'force-dynamic';
 
-    useEffect(()=>{
-        const get = async()=>{
-            try{
-                const data = JSON.parse(await GetBlogs());
-                if(data.success){
-                    setBlogs(data.blogs);
-                    setLoading(false);
-                }else{
-                    setError(data.error);
-                    setLoading(false);
-                }
-            }catch(err){
-                setError(err);
-                setLoading(false);
-            }
-        }
-        get();
-    },[])
+export default async function Blogs(){
 
-    if(loading)return(
-        <div className="flex w-full h-full items-center justify-center">
-            <LoaderCircleIcon className="size-20 animate-spin"/>
-        </div>
-    )
-
-    if(error)return(
-        <div className="flex w-full h-full items-center justify-center">
-            <span className="text-xl font-bold">{error}</span>
-        </div>
-    )
-
+    const { blogs } = JSON.parse(await GetBlogs());
 
     return(
         <section

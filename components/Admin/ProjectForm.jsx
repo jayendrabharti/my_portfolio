@@ -18,7 +18,8 @@ import {
     Send,
     Trash2,
     LoaderCircle,
-    UploadIcon
+    UploadIcon,
+    XIcon
 } from 'lucide-react';
 
 const defaultInitialValues = {
@@ -81,6 +82,7 @@ export default function ProjectForm({ onSubmit, initialValues = defaultInitialVa
 
             {projectImageURL 
             ? 
+            <div className='relative'>
                 <Image
                     src={projectImageURL}
                     alt='paymentss'
@@ -88,6 +90,11 @@ export default function ProjectForm({ onSubmit, initialValues = defaultInitialVa
                     height={300}
                     className='mx-auto w-full'
                 />
+                <XIcon
+                    onClick={()=>setProjectImageURL(null)} 
+                    className='bg-black text-white rounded-full size-10 p-1 absolute top-0 right-0 translate-x-1/2 -translate-y-1/2'
+                /> 
+            </div>
             :
             <div className="relative">
                 <div className='relative max-w-md h-48 mx-auto'>

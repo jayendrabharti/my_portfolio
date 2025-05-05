@@ -41,9 +41,9 @@ export default function HeroSection() {
                     >
                         Contact Me
                     </Link>
-                    <button className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
+                    <Link href={'/projects'} className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
                         View my Work
-                    </button>
+                    </Link>
                 </div>
             </div>
 

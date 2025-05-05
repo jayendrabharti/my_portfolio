@@ -2,7 +2,7 @@ import { cn } from "@/libs/cn"
 import { GetProjects } from "@/actions/projects";
 import ProjectCard from "@/components/Projects/ProjectCard";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic';
 
 export default async function Projects(){
 

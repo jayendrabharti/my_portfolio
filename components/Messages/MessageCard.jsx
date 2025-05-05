@@ -27,7 +27,7 @@ export default function MessageCard({ message, deleteMessage, markAs}) {
           </div>
         </div>
         <div className="text-xs text-zinc-500 dark:text-zinc-400">
-          {formatTimestamp(message.timestamp)}
+          {formatTimestamp(message.createdAt)}
         </div>
       </div>
       

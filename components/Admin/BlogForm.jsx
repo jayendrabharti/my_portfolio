@@ -26,6 +26,7 @@ const defaultInitialValues = {
     title: '',
     slug: '',
     content: null,
+    displayContent: '',
     coverImage: null,
     tags: [],
     datetime: new Date().toISOString().split('T')[0],
@@ -92,7 +93,7 @@ export default function BlogForm({ onSubmit, initialValues = defaultInitialValue
                 <XIcon
                     onClick={()=>setBlogImageURL(null)} 
                     className='bg-black text-white rounded-full size-10 p-1 absolute top-0 right-0 translate-x-1/2 -translate-y-1/2'
-                />
+                /> 
             </div>
             :
             <div className="relative">
@@ -184,6 +185,7 @@ export default function BlogForm({ onSubmit, initialValues = defaultInitialValue
                         <BlogEditor 
                             content={values.content} 
                             setContent={(c)=>setFieldValue("content",c)}
+                            setDisplayContent={(dc)=>setFieldValue("displayContent",dc)}
                         />
 
                         {isSubmitting ? (

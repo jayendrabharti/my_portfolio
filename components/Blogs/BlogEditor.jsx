@@ -23,7 +23,7 @@ const TOOLBAR_OPTIONS = [
   ["clean"],
 ];
 
-export default function BlogEditor({content,setContent}){
+export default function BlogEditor({content,setContent,setDisplayContent}){
   const [quill, setQuill] = useState();
   
   useEffect(() => {
@@ -31,7 +31,9 @@ export default function BlogEditor({content,setContent}){
 
     const handleTextChange = () => {
       const delta = quill.getContents();
+      const displayContent = document.getElementsByClassName('ql-editor')[0].innerHTML;
       setContent(delta.ops);
+      setDisplayContent(displayContent);
     };
 
     quill.on('text-change', handleTextChange);

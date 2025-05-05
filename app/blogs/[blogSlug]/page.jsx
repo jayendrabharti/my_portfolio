@@ -1,16 +1,14 @@
 "use client";
 
-import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
-import Quill from 'quill';
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.bubble.css";
 
 import { cn } from "@/libs/cn";
-import { ArrowLeftIcon, Eye, EyeIcon, LoaderCircleIcon } from "lucide-react";
+import { EyeIcon, LoaderCircleIcon } from "lucide-react";
 import { GetBlogBySlug } from "@/actions/blogs";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { formatTimestamp } from "@/utils/common";
@@ -30,24 +28,6 @@ export default function Blog() {
     get();
   }, []);
 
-  const containerRef = useCallback((container)=>{
-    if(!container || !blog)return;
-
-    container.innerHTML = "";
-    const editor = document.createElement('div');
-    container.append(editor);
-    const q = new Quill(editor, {
-      readOnly: true,
-      theme: "snow",
-      modules: { 
-        syntax: { hljs },
-        toolbar: false 
-      },
-    });
-    q.setContents(blog.content);
-  },[blog]);
-
-
   if (!blog)
     return (
       <div className="w-full h-full flex justify-center items-center">
@@ -59,7 +39,7 @@ export default function Blog() {
     <section
         id="blog-section"
         className={cn(
-            "flex flex-col gap-6 p-10 mx-auto max-w-4xl relative",
+            "flex flex-col gap-6 p-10 mx-auto max-w-4xl relative w-max",
         )}
     >
       <span className="text-3xl md:text-5xl font-extrabold">
@@ -83,6 +63,21 @@ export default function Blog() {
           <span className="text-zinc-500">{blog.views} views</span>
       </div>
 
+      <div className="flex flex-wrap gap-2">
+        {blog.tags.map((tag,index) => (
+        <span
+            key={index}
+          className={cn(
+            "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium",
+            "bg-zinc-200 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200",
+            "transition-colors duration-200 italic",
+          )}
+        >
+          {tag}
+        </span>
+        ))}
+      </div>
+
       <Image
         src={blog.coverImage}
         alt="coverImage"
@@ -91,11 +86,14 @@ export default function Blog() {
         className="w-full"
       />
 
-      <div 
-        id="container"
-        className="container w-full border-t-2 border-zinc-300 dark:border-zinc-700 pt-10" 
-        ref={containerRef}
-      />
+      <div className="container w-full border-t-2 border-zinc-300 dark:border-zinc-700 pt-6">
+        <div className="ql-container ql-snow ql-disabled">
+          <div 
+            className="ql-editor" 
+            dangerouslySetInnerHTML={{__html: blog.displayContent}}
+          />
+        </div>
+      </div>
 
     </section>
   )
