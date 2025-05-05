@@ -1,22 +1,17 @@
-"use client";
 import { ExternalLink, Github, Pencil, PencilIcon, StarIcon, Trash2Icon } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { cn } from '@/libs/cn';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function ProjectCard({ project,deleteProject ,admin = false,className="", onClick = ()=>{} }){
+export default function ProjectCard({ project,deleteProject ,admin = false,className=""}){
 
   return (
-    <motion.div 
+    <div 
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900",
         "transition-all duration-300 hover:shadow-md dark:hover:shadow-zinc-800/30",
         className
       )}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
     >
       
       <div className="relative h-48 md:h-64 overflow-hidden">
@@ -113,6 +108,6 @@ export default function ProjectCard({ project,deleteProject ,admin = false,class
       }
 
 
-    </motion.div>
+    </div>
   );
 }

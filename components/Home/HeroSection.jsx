@@ -1,14 +1,10 @@
-"use client";
-import useIsMobile from "@/hooks/useIsMobile";
 import { cn } from "@/libs/cn";
-import { anurati } from "@/utils/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
 export default function HeroSection() {
 
-    const isMobile = useIsMobile();
     const username = "jayendrabharti";
 
     return (
@@ -52,14 +48,15 @@ export default function HeroSection() {
             </div>
 
             <div className="order-1 md:order-2">
+                <Link href={`https://github.com/${username}`}>
                 <Image
                     src={`https://github.com/${username}.png`}
                     alt={username}
                     width={150}
                     height={150}
-                    onClick={() => window.open(`https://github.com/${username}`)}
                     className={"cursor-pointer w-20 md:w-40 ml-1 md:ml-auto rounded-xl"}
                 />
+                </Link>
             </div>
 
         </section>
