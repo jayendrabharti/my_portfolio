@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import ScrollToTop from "./ScrollToTop";
 
 export default function Main({ children, ...props }) {
     
@@ -10,7 +11,7 @@ export default function Main({ children, ...props }) {
 
     useEffect(() => {
         if (mainRef.current) {
-          mainRef.current.scrollTo({top: 0});
+          mainRef.current.scrollTo({top: 0, behavior: "smooth"});
         }
     }, [pathname]);
 
@@ -20,6 +21,7 @@ export default function Main({ children, ...props }) {
             {...props}
         >
             {children}
+            <ScrollToTop mainRef={mainRef}/>
         </div>
     );
 }

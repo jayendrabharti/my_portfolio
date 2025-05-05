@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import { cn } from "@/libs/cn";
 import { Provider as ReactBalancerProvider } from "react-wrap-balancer";
 import Main from "@/components/Main";
-import ScrollToTop from "@/components/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,7 +44,6 @@ return (
     <div className={"flex flex-col"}>{children}</div>
     <Footer/>
   </Main>
-  <ScrollToTop/>
 
 </ReactBalancerProvider>
 </ThemeProvider>

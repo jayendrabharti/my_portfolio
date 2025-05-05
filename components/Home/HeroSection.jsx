@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
-export default function HeroSection() {
+export default async function HeroSection() {
 
     const username = "jayendrabharti";
 
@@ -11,8 +11,8 @@ export default function HeroSection() {
         <section
             id="hero-section"
             className={cn(
-                "grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-center text-left p-10 mx-auto max-w-4xl",
-            )}
+                "grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-center p-10 mx-auto max-w-4xl",
+            )} 
         >
             <div className="order-2 md:order-1">
                 

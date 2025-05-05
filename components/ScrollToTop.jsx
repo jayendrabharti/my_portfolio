@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
 import { cn } from "@/libs/cn";
 
-export default function ScrollToTop(){
+export default function ScrollToTop({mainRef}){
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = (e) => {
@@ -16,15 +16,12 @@ export default function ScrollToTop(){
   };
 
   useEffect(() => {
-    const main = document.getElementById('main');
-
-    main.addEventListener("scroll", toggleVisibility);
-    return () => main.removeEventListener("scroll", toggleVisibility);
+    mainRef.current.addEventListener("scroll", toggleVisibility);
+    return () => mainRef.current.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
-    const main = document.getElementById('main');
-    main.scrollTo({
+    mainRef.current.scrollTo({
       top: 0,
       behavior: "smooth",
     });

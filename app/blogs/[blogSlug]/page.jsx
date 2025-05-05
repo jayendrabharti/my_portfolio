@@ -1,39 +1,27 @@
-"use client";
-
 import "highlight.js/styles/default.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.bubble.css";
 
 import { cn } from "@/libs/cn";
-import { EyeIcon, LoaderCircleIcon } from "lucide-react";
-import { GetBlogBySlug } from "@/actions/blogs";
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { ArrowLeftIcon, EyeIcon } from "lucide-react";
+import { GetBlogBySlug, GetBlogs } from "@/actions/blogs";
 import Image from "next/image";
 import { formatTimestamp } from "@/utils/common";
+import Link from "next/link";
 
-export default function Blog() {
-  const [blog, setBlog] = useState(null);
-  const { blogSlug } = useParams();
- 
-  useEffect(() => {
-    const get = async () => {
-      const data = JSON.parse(await GetBlogBySlug(blogSlug));
-      const b = {...data.blog, datetime: new Date(data.blog.datetime).toISOString().split('T')[0].toString()}
-      setBlog(b);
-      console.log(b);
-    };
+export async function generateStaticParams() {
+  const { blogs } = JSON.parse(await GetBlogs());
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }))
+}
 
-    get();
-  }, []);
+export default async function Blog({params}) {
 
-  if (!blog)
-    return (
-      <div className="w-full h-full flex justify-center items-center">
-        <LoaderCircleIcon className="animate-spin text-black dark:text-white size-20" />
-      </div>
-    );
+  const { blogSlug } = await params;
+  const data = JSON.parse(await GetBlogBySlug(blogSlug));
+  const blog = {...data.blog, datetime: new Date(data.blog.datetime).toISOString().split('T')[0].toString()}
 
   return(
     <section
@@ -42,19 +30,24 @@ export default function Blog() {
             "flex flex-col gap-6 p-10 mx-auto max-w-4xl relative w-max",
         )}
     >
+      <Link href={`/blogs`} className="flex flex-row items-center gap-1 ml-auto bg-zinc-300 dark:bg-zinc-700 px-2 py-1 rounded-full hover:ring-4 ring-zinc-500 active:scale-75 transition-all duration-150">
+        <ArrowLeftIcon className="size-5"/>
+        Blogs
+      </Link>
       <span className="text-3xl md:text-5xl font-extrabold">
         {blog.title}
       </span>
 
-      <div className="flex flex-row items-center gap-2 text-zinc-600 dark:text-zinc-400"> 
+      <div className="flex flex-row items-center gap-2 text-zinc-600 dark:text-zinc-400">
+          <Link href={`https://github.com/jayendrabharti`}>
           <Image
             src={`https://github.com/jayendrabharti.png`}
             alt={"jayendrabharti"}
             width={150}
             height={150}
-            onClick={() => window.open(`https://github.com/jayendrabharti`)}
             className={"cursor-pointer size-6 rounded-full"}
-            />
+          />
+          </Link> 
           <span 
             className="font-semibold"
           >Jayendra Bharti / {formatTimestamp(blog.datetime,2)}</span>
