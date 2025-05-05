@@ -10,7 +10,7 @@ export default function AboutMe() {
         <section
             id="about-section"
             className={cn(
-                "gap-4 items-center text-left p-10 mx-auto max-w-4xl",
+                "flex flex-col gap-4 text-left p-10 mx-auto max-w-4xl",
             )}
         >
             <div>

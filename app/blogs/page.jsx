@@ -48,9 +48,13 @@ export default function Blogs(){
         <section
             id="blog-section"
             className={cn(
-                "gap-4 items-center text-left p-10 mx-auto max-w-4xl",
+                "gap-4 flex flex-col text-left p-10 mx-auto max-w-4xl",
             )}
         >
+            <span className="text-3xl md:text-5xl font-bold">
+                Blogs
+            </span>
+
             {!blogs.length && 
                 <span 
                     className="text-2xl font-bold"

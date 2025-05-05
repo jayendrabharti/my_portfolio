@@ -47,9 +47,14 @@ export default function Projects(){
         <section
             id="project-section"
             className={cn(
-                "gap-4 items-center text-left p-10 mx-auto max-w-4xl",
+                "flex flex-col gap-4 text-left p-10 mx-auto max-w-4xl",
             )}
         >
+
+            <span className="text-3xl md:text-5xl font-bold">
+                Projects
+            </span>
+
             {!projects.length && 
                 <span 
                     className="text-2xl font-bold"
