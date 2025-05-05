@@ -14,8 +14,8 @@ export const QuickLinksList = [
 
 const SocialsLinkList = [
     {name:"Mail", href:"mailto:jay.bharti2804@gmail.com", icon: AtSign},
-    {name:"Instagram", href:"", icon: InstagramIcon},
-    {name:"Twitter", href:"", icon: TwitterIcon},
+    {name:"Instagram", href:"https://www.instagram.com/jayendra.bharti", icon: InstagramIcon},
+    {name:"Twitter", href:"https://x.com/Jayendra_Bharti", icon: TwitterIcon},
     {name:"Facebook", href:"", icon: FacebookIcon},
 ]
 

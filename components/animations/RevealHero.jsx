@@ -1,20 +1,42 @@
 "use client";
-import { motion } from 'framer-motion';
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
-export default function RevealHero({ children, width = "fit-content", className=""}){
+export default function RevealHero({
+  children,
+  width = "fit-content",
+  className = "",
+  bgColor = "bg-sky-400",
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  const slideControls = useAnimation();
+  const contentControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      slideControls.start("visible");
+      contentControls.start("visible");
+    }else{
+      slideControls.set("hidden");
+      contentControls.set("hidden");
+    }
+  }, [isInView, slideControls, contentControls]);
 
   return (
-    <div style={{width: width}} 
+    <div
+      ref={ref}
+      style={{ width }}
       className={`${className} relative overflow-hidden`}
     >
       <motion.div
-        className="slide absolute top-0 left-0 bottom-0 right-0 bg-logoColor z-20"
+        className={`slide absolute top-0 left-0 bottom-0 right-0 z-20 ${bgColor}`}
         variants={{
           hidden: { left: 0 },
-          visible: { left: '100%' },
+          visible: { left: "100%" },
         }}
         initial="hidden"
-        whileInView="visible"
+        animate={slideControls}
         transition={{ duration: 0.6, delay: 0, ease: "easeIn" }}
       />
       <motion.div
@@ -23,11 +45,12 @@ export default function RevealHero({ children, width = "fit-content", className=
           visible: { opacity: 1, left: 0 },
         }}
         initial="hidden"
-        whileInView="visible"
+        animate={contentControls}
         transition={{ duration: 0.6, delay: 0 }}
+        className="relative z-10"
       >
         {children}
       </motion.div>
     </div>
   );
-};
+}

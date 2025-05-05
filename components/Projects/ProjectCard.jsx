@@ -2,10 +2,12 @@ import { ExternalLink, Github, Pencil, PencilIcon, StarIcon, Trash2Icon } from '
 import { cn } from '@/libs/cn';
 import Link from 'next/link';
 import Image from 'next/image';
+import Reveal from '../animations/Reveal';
 
 export default function ProjectCard({ project,deleteProject ,admin = false,className=""}){
 
   return (
+    <Reveal>
     <div 
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900",
@@ -109,5 +111,6 @@ export default function ProjectCard({ project,deleteProject ,admin = false,class
 
 
     </div>
+    </Reveal>
   );
 }

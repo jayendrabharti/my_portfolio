@@ -1,6 +1,7 @@
 import { cn } from "@/libs/cn"
 import { GetProjects } from "@/actions/projects";
 import ProjectCard from "@/components/Projects/ProjectCard";
+import RevealHero from "@/components/animations/RevealHero";
 
 export const revalidate = 60;
 
@@ -15,10 +16,11 @@ export default async function Projects(){
                 "flex flex-col gap-4 text-left p-10 mx-auto max-w-4xl",
             )}
         >
-
+            <RevealHero>
             <span className="text-3xl md:text-5xl font-bold">
                 Projects
             </span>
+            </RevealHero>
 
             {!projects.length && 
                 <span 

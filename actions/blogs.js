@@ -18,6 +18,7 @@ export async function GetBlogBySlug(slug) {
     try {
         await connectToDB();
         const blog = await Blog.findOne({ slug: slug });
+        await Blog.findByIdAndUpdate(blog._id,{views: blog.views+1});
         return JSON.stringify({ success: true, blog: blog });
 
     } catch (error) {

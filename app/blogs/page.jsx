@@ -1,6 +1,7 @@
 import { cn } from "@/libs/cn"
 import BlogCard from "@/components/Blogs/BlogCard";
 import { GetBlogs } from "@/actions/blogs";
+import RevealHero from "@/components/animations/RevealHero";
 
 export const revalidate = 60;
 
@@ -15,9 +16,11 @@ export default async function Blogs(){
                 "gap-4 flex flex-col text-left p-10 mx-auto max-w-4xl",
             )}
         >
+            <RevealHero>
             <span className="text-3xl md:text-5xl font-bold">
                 Blogs
             </span>
+            </RevealHero>
 
             {!blogs.length && 
                 <span 

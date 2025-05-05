@@ -6,10 +6,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
 import { formatTimestamp } from '@/utils/common';
+import Reveal from '../animations/Reveal';
 
 export default function BlogCard({ blog, deleteBlog ,admin = false, className="" }){
 
   return (
+    <Reveal>
     <Link href={admin?`/admin/blogs/${blog.slug}`:`/blogs/${blog.slug}`}>
     <div 
       className={cn(
@@ -93,5 +95,6 @@ export default function BlogCard({ blog, deleteBlog ,admin = false, className=""
 
     </div>
     </Link>
+    </Reveal>
   );
 }

@@ -2,11 +2,16 @@
 import { cn } from "@/libs/cn";
 import Balancer from "react-wrap-balancer";
 import Image from "next/image";
+import TechStack from "@/components/TechStack";
+import RevealHero from "@/components/animations/RevealHero";
+import Reveal from "@/components/animations/Reveal";
 
 const username = "jayendrabharti"
 
 export default function AboutMe() {
     return (
+        <>
+        
         <section
             id="about-section"
             className={cn(
@@ -15,10 +20,13 @@ export default function AboutMe() {
         >
             <div>
                 
+                <RevealHero>
                 <span className="text-3xl md:text-5xl font-bold">
                     About me
                 </span>
+                </RevealHero>
 
+                <Reveal>
                 <p className="mt-4 text-zinc-400">
                     <Balancer>
                     A Full-Stack Developer passionate about building fast, modern, and
@@ -26,8 +34,12 @@ export default function AboutMe() {
                     experiences.
                     </Balancer>
                 </p>
+                </Reveal>
 
             </div>
         </section>
+        
+        <TechStack/>
+        </>
     );
 }
