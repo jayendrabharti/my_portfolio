@@ -1,12 +1,13 @@
 "use client";
 
-import { StarIcon, Trash2Icon } from 'lucide-react';
+import { EyeIcon, StarIcon, Trash2Icon } from 'lucide-react';
 import { cn } from '@/libs/cn';
 import Link from 'next/link';
 import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
 import { formatTimestamp } from '@/utils/common';
 import Reveal from '../animations/Reveal';
+import BlogViews from './BlogViews';
 
 export default function BlogCard({ blog, deleteBlog ,admin = false, className="" }){
 
@@ -54,11 +55,19 @@ export default function BlogCard({ blog, deleteBlog ,admin = false, className=""
             ))}
           </div>
 
-          <div className='flex w-full flex-row justify-end'>
+          <div className='flex w-full flex-row justify-between mt-4'>
+              <div className="text-zinc-500 flex flex-row items-center">
+                <EyeIcon className="ml-auto mr-1"/>
+                <span>
+                  <BlogViews slug={blog.slug}/>&nbsp;views
+                </span>
+              </div>
+          
               <span className='text-xs text-zinc-900 dark:text-zinc-50 w-max mt-2'>
                   {formatTimestamp(blog.datetime,2)}
                   {/* {formatDistanceToNow(new Date(blog.datetime), { addSuffix: true })} */}
               </span>
+
           </div>
 
           {admin && <p className='w-full text-center'>(Open to Edit)</p>}

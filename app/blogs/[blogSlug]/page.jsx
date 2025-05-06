@@ -10,6 +10,7 @@ import Image from "next/image";
 import { formatTimestamp } from "@/utils/common";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BlogViews from "@/components/Blogs/BlogViews";
 
 export async function generateStaticParams() {
   const { blogs } = JSON.parse(await GetBlogs());
@@ -17,8 +18,6 @@ export async function generateStaticParams() {
     slug: blog.slug,
   }))
 }
-// export const revalidate = 60;
-// export const dynamic = 'force-dynamic'
 
 export default async function Blog({params}) {
 
@@ -59,7 +58,9 @@ export default async function Blog({params}) {
           >Jayendra Bharti / {formatTimestamp(blog.datetime,2)}</span>
 
           <EyeIcon className="ml-auto"/>
-          <span className="text-zinc-500">{blog.views} views</span>
+          <span className="text-zinc-500">
+            <BlogViews slug={blog.slug} increment={true}/>&nbsp;views
+          </span>
       </div>
 
       <div className="flex flex-wrap gap-2">
