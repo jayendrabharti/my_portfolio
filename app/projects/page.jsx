@@ -4,7 +4,7 @@ import ProjectCard from "@/components/Projects/ProjectCard";
 import RevealHero from "@/components/animations/RevealHero";
 
 // export const revalidate = 60;
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 export default async function Projects(){
 

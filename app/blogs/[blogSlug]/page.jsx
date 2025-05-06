@@ -9,6 +9,7 @@ import { GetBlogBySlug, GetBlogs } from "@/actions/blogs";
 import Image from "next/image";
 import { formatTimestamp } from "@/utils/common";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const { blogs } = JSON.parse(await GetBlogs());
@@ -17,12 +18,15 @@ export async function generateStaticParams() {
   }))
 }
 // export const revalidate = 60;
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 export default async function Blog({params}) {
 
   const { blogSlug } = await params;
   const data = JSON.parse(await GetBlogBySlug(blogSlug));
+
+  if(!data.success)return notFound();
+
   const blog = {...data.blog, datetime: new Date(data.blog.datetime).toISOString().split('T')[0].toString()}
 
   return(

@@ -2,6 +2,7 @@
 
 import Project from "@/models/project";
 import { connectToDB } from "@/utils/database";
+import { revalidatePath } from "next/cache";
 
 export async function GetProjects() {
     try {
@@ -29,6 +30,10 @@ export async function UpdateProjectBySlug(slug,values) {
     try {
         await connectToDB();
         const project = await Project.findOneAndUpdate({slug: slug},values);
+        
+        revalidatePath(`/`);
+        revalidatePath(`/projects`);
+        
         return JSON.stringify({ success: true, project: project });
 
     } catch (error) {
@@ -40,6 +45,10 @@ export async function DeleteProjectBySlug(slug) {
     try {
         await connectToDB();
         const project = await Project.findOneAndDelete({slug: slug});
+
+        revalidatePath(`/`);
+        revalidatePath(`/projects`);
+
         return JSON.stringify({ success: true, project: project });
 
     } catch (error) {
@@ -51,6 +60,10 @@ export async function CreateProject(projectData) {
     try {
         await connectToDB();
         const project = await Project.create(projectData);
+
+        revalidatePath(`/`);
+        revalidatePath(`/projects`);
+
         return JSON.stringify({ success: true, project: project });
 
     } catch (error) {

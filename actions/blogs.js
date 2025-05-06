@@ -2,6 +2,7 @@
 
 import Blog from "@/models/blog";
 import { connectToDB } from "@/utils/database";
+import { revalidatePath } from "next/cache";
 
 export async function GetBlogs() {
     try {
@@ -18,7 +19,7 @@ export async function GetBlogBySlug(slug) {
     try {
         await connectToDB();
         const blog = await Blog.findOne({ slug: slug });
-        await Blog.findByIdAndUpdate(blog._id,{views: blog.views+1});
+        await UpdateBlogBySlug(blog.slug,{views: blog.views+1});
         return JSON.stringify({ success: true, blog: blog });
 
     } catch (error) {
@@ -30,6 +31,11 @@ export async function UpdateBlogBySlug(slug, values) {
     try {
         await connectToDB();
         const blog = await Blog.findOneAndUpdate({ slug: slug },values);
+        
+        revalidatePath(`/`);
+        revalidatePath(`/blogs`);
+        revalidatePath(`/blogs/${slug}`);
+        
         return JSON.stringify({ success: true, blog: blog });
 
     } catch (error) {
@@ -41,6 +47,11 @@ export async function DeleteBlogBySlug(slug) {
     try {
         await connectToDB();
         const blog = await Blog.findOneAndDelete({ slug: slug });
+        
+        revalidatePath(`/`);
+        revalidatePath(`/blogs`);
+        revalidatePath(`/blogs/${slug}`);
+        
         return JSON.stringify({ success: true, blog: blog });
 
     } catch (error) {
@@ -52,6 +63,11 @@ export async function CreateBlog(blogData) {
     try {
         await connectToDB();
         const blog = await Blog.create(blogData);
+        
+        revalidatePath(`/`);
+        revalidatePath(`/blogs`);
+        revalidatePath(`/blogs/${blog.slug}`);
+
         return JSON.stringify({ success: true, blog: blog });
 
     } catch (error) {
