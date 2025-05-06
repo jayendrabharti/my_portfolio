@@ -26,8 +26,8 @@ export default function Blogs() {
 
         const data = JSON.parse(await DeleteBlogBySlug(slug));
         if (data.success) {
-            alert("Deleted Successfully");
             setBlogs((prev) => prev.filter((blog) => blog.slug !== slug));
+            alert("Deleted Successfully");
         } else {
             alert("Not able to delete!! Refresh and try again!!");
         }

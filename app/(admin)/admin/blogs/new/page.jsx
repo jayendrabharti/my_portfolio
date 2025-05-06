@@ -13,7 +13,7 @@ export default function NewBlogs() {
         console.log(res);
         if(res.success){
             alert("Blog submitted successfully!");
-            router.push('/admin/blogs')
+            router.push(`/admin/blogs/${res.blog.slug}/editor`);
         }else{
             alert("Blog not created! Refresh and retry!!");
         }

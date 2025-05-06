@@ -19,13 +19,11 @@ import {
     LoaderCircle,
     XIcon
 } from 'lucide-react';
-import dynamic from 'next/dynamic';
-const BlogEditor = dynamic(() => import('@/components/Blogs/BlogEditor'), { ssr: false });
 
 const defaultInitialValues = {
     title: '',
     slug: '',
-    content: null,
+    content: [],
     displayContent: '',
     coverImage: null,
     tags: [],
@@ -69,8 +67,6 @@ export default function BlogForm({ onSubmit, initialValues = defaultInitialValue
                     }
                     values.coverImage = blogImageURL;
                     onSubmit(values);
-                    setSubmitting(false);
-                    resetForm();
                 }}
             >
                 {({ values, isSubmitting, setFieldValue }) => (
@@ -181,12 +177,6 @@ export default function BlogForm({ onSubmit, initialValues = defaultInitialValue
                                 </div>
                             </div>
                         </div>
-
-                        <BlogEditor 
-                            content={values.content} 
-                            setContent={(c)=>setFieldValue("content",c)}
-                            setDisplayContent={(dc)=>setFieldValue("displayContent",dc)}
-                        />
 
                         {isSubmitting ? (
                             <div className="flex justify-center">

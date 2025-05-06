@@ -4,38 +4,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import Reveal from "./animations/Reveal";
 import RevealHero from "./animations/RevealHero";
-
-const TechList = [
-    { name: "HTML", imageSrc: "/svg/html.svg" },
-    { name: "CSS", imageSrc: "/svg/css.svg" },
-    { name: "JavaScript", imageSrc: "/svg/javascript.svg" },
-    { name: "Tailwind CSS", imageSrc: "/svg/tailwind.svg" },
-    { name: "React JS", imageSrc: "/svg/reactjs.svg" },
-    { name: "Vite", imageSrc: "/svg/vite.svg" },
-    { name: "Node JS", imageSrc: "/svg/nodejs.svg" },
-    { name: "Firebase", imageSrc: "/svg/firebase.svg" },
-    { name: "Vercel", imageSrc: "/svg/vercel.svg" },
-    { name: "Next JS", imageSrc: "/svg/nextjs.svg" },
-    { name: "Sanity.io", imageSrc: "/svg/sanity.svg" },
-    { name: "C", imageSrc: "/svg/c.svg" },
-    { name: "C++", imageSrc: "/svg/cplusplus.svg" },
-    { name: "Electron", imageSrc: "/svg/electron.svg" },
-    { name: "Express.js", imageSrc: "/svg/express.svg" },
-    { name: "GitHub", imageSrc: "/svg/github.svg" },
-    { name: "Google Cloud", imageSrc: "/svg/googlecloud.svg" },
-    { name: "MongoDB", imageSrc: "/svg/mongodb.svg" },
-    { name: "MySQL", imageSrc: "/svg/mysql.svg" },
-    { name: "NPM", imageSrc: "/svg/npm.svg" },
-    { name: "PostgreSQL", imageSrc: "/svg/postgresql.svg" },
-    { name: "Postman", imageSrc: "/svg/postman.svg" },
-    { name: "Python", imageSrc: "/svg/python.svg" },
-    { name: "Railway", imageSrc: "/svg/railway.svg" },
-    { name: "Socket.io", imageSrc: "/svg/socketio.svg" },
-    { name: "Supabase", imageSrc: "/svg/supabase.svg" },
-    { name: "Three.js", imageSrc: "/svg/threejs.svg" },
-    { name: "TypeScript", imageSrc: "/svg/typescript.svg" },
-    { name: "Cloudflare", imageSrc: "/svg/cloudflare.svg" }
-];
+import { TechList } from "@/data/MyData";
 
 export default function TechStack() {
     const [expanded, setExpanded] = useState(false);

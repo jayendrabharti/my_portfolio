@@ -2,20 +2,22 @@
 
 import { cn } from "@/libs/cn";
 import { anurati } from "@/utils/fonts";
-import { HomeIcon, InfoIcon, Menu, PencilRulerIcon, ScrollTextIcon, UsersIcon, X } from "lucide-react";
+import { HomeIcon, Users2Icon, MessageCircleIcon, InfoIcon, Menu, PencilRulerIcon, ScrollTextIcon, UsersIcon, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ThemeSwitch from "./ThemeSwitch";
+import ThemeSwitch from "../ThemeSwitch";
 import { useState } from "react";
+import UserButton from "../UserButton";
 
 export const NavBarLinks = [
-  { name: "Home", href: "/", icon: HomeIcon },
-  { name: "About", href: "/aboutme", icon: InfoIcon },
-  { name: "Projects", href: "/projects", icon: PencilRulerIcon },
-  { name: "Blogs", href: "/blogs", icon: ScrollTextIcon },
+  {name: "Dashboard", href: "/admin", icon: HomeIcon},
+  {name: "Blogs", href: "/admin/blogs", icon: ScrollTextIcon},
+  {name: "Projects", href: "/admin/projects", icon: PencilRulerIcon},
+  {name: "Testimonials", href: "/admin/testimonials", icon: Users2Icon},
+  {name: "Messages", href: "/admin/messages", icon: MessageCircleIcon},
 ];
 
-export default function NavBar() {
+export default function AdminNavBar() {
 
   const pathname = usePathname();
   const [expanded, setExpanded] = useState(false);
@@ -86,6 +88,7 @@ export default function NavBar() {
           })}
           
           <div  className={"ml-auto md:ml-0 flex flex-row"} >
+            <UserButton/>
             <ThemeSwitch/>
           </div>
 

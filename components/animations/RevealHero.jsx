@@ -6,7 +6,7 @@ export default function RevealHero({
   children,
   width = "fit-content",
   className = "",
-  bgColor = "bg-sky-400",
+  bgColor = "bg-indigo-600",
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref);

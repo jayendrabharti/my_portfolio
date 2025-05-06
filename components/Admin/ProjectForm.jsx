@@ -70,8 +70,6 @@ export default function ProjectForm({ onSubmit, initialValues = defaultInitialVa
                     }
                     values.image = projectImageURL;
                     onSubmit(values);
-                    setSubmitting(false);
-                    resetForm();
                 }}
             >
                 {({ values, errors, touched, isSubmitting, setFieldValue, resetForm }) => (

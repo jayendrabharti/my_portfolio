@@ -1,17 +1,21 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import Blog from "@/models/blog";
+import Message from "@/models/message";
+import Project from "@/models/project";
 import Link from "next/link"
 
-export default function AdminDashboard() {
-    const router = useRouter()
-    
+export const dynamic = "force-dynamic";
+
+export default async function AdminDashboard() {
+
+    const blogCount = await Blog.countDocuments();
+    const projectCount = await Project.countDocuments();
+    const messageCount = await Message.countDocuments();
+
     const stats = [
-        { label: "Blog Posts", value: 12 },
-        { label: "Projects", value: 8 },
-        { label: "Testimonials", value: 6 },
-        { label: "Messages", value: 24 },
+        { label: "Blog Posts", value: blogCount },
+        { label: "Projects", value: projectCount },
+        { label: "Testimonials", value: 0 },
+        { label: "Messages", value: messageCount },
     ]
 
     return (

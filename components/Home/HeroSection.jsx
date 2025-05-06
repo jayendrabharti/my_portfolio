@@ -18,13 +18,13 @@ export default async function HeroSection() {
         >
             <div className="order-2 md:order-1">
                 
-                <RevealHero bgColor="bg-cyan-400">
+                <RevealHero>
                 <span className="text-3xl md:text-5xl font-bold">
                     Hi, I'm&nbsp;
                     <span
                         className={cn(
                             "inline-block w-max bg-clip-text text-transparent",
-                            "bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent"
+                            "bg-gradient-to-r from-indigo-600 to-cyan-400 bg-clip-text text-transparent"
                         )}
                     >JAYENDRA BHARTI</span>
                 </span>
@@ -44,12 +44,21 @@ export default async function HeroSection() {
                 <div className="mt-6 flex justify-start gap-4">
                     <Link
                         href={'/contact'} 
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        className="px-4 py-2 bg-indigo-600 text-white rounded-full flex flex-row items-center font-bold transition-all duration-100 active:scale-75"
                         >
                         Contact Me
                     </Link>
-                    <Link href={'/projects'} className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
-                        View my Work
+
+                    <Link 
+                        href={'/projects'}  
+                        className="relative inline-flex h-12 overflow-hidden rounded-full p-[2px] transition-all duration-100 active:scale-75"
+                    >
+
+                            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-900 px-3 py-1 text-sm font-bold backdrop-blur-3xl text-zinc-600 dark:text-zinc-400 hover:text-black hover:dark:text-white transition-all duration-200">
+                                View my Work
+                            </span>
+
                     </Link>
                 </div>
                 </Reveal>

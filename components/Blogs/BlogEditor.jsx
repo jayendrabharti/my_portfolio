@@ -1,26 +1,34 @@
 "use client";
+
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
 import Quill from 'quill';
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.bubble.css";
-
+ 
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 
 const TOOLBAR_OPTIONS = [
-  [{ font: [] }],
-  [{ header: [1, 2, 3, 4, 5, 6, false] }],
-  ["bold", "italic", "underline", "strike", "code"],
-  [{ script: "sub" }, { script: "super" }],
-  [{ color: [] }, { background: [] }],
-  [{ list: "ordered" }, { list: "bullet" }],
-  [{ indent: "-1" }, { indent: "+1" }],
-  [{ direction: "rtl" }],
-  [{ align: [] }],
-  ["link", "image","video" ,"blockquote", "code-block"],
-  ["clean"],
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+  ['link', 'image', 'video', 'formula'],
+
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+  [{ 'direction': 'rtl' }],                         // text direction
+
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': [] }],
+  [{ 'align': [] }],
+
+  ['clean']                                         // remove formatting button
 ];
 
 export default function BlogEditor({content,setContent,setDisplayContent}){
@@ -50,6 +58,7 @@ export default function BlogEditor({content,setContent,setDisplayContent}){
     container.append(editor);
     const q = new Quill(editor, {
       theme: "snow",
+      placeholder: 'Write your blog...',
       modules: { 
         syntax: { hljs },
         toolbar: TOOLBAR_OPTIONS 
@@ -60,6 +69,7 @@ export default function BlogEditor({content,setContent,setDisplayContent}){
     setQuill(q)
     q.setContents(content);
     q.enable();
+    
   },[]);
 
 

@@ -24,8 +24,8 @@ export default function Projects() {
 
         const data = JSON.parse(await DeleteProjectBySlug(slug));
         if (data.success) {
-            alert("Deleted Successfully");
             setProjects((prevProjects) => prevProjects.filter((project) => project.slug !== slug));
+            alert("Deleted Successfully");
         } else {
             alert("Not able to delete!! Refresh and try again!!");
         }

@@ -15,7 +15,7 @@ export default function NewProject() {
     console.log(res);
     if(res.success){
       alert("Project submitted successfully!");
-      router.push('/admin/projects')
+      router.push('/admin/projects');
     }else{
       alert("Project not created! Refresh and retry!!");
     }

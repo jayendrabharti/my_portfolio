@@ -3,10 +3,9 @@ import { authOptions } from "@/utils/authOptions"
 import { ArrowBigRight } from "lucide-react";
 import { getServerSession } from "next-auth"
 import Link from "next/link";
-import AdminSidebar from "@/components/Admin/AdminSidebar"
 
 export default async function AdminLayout({children}) {
-    
+     
     const session = await getServerSession(authOptions);
     
     if(!session){
@@ -30,11 +29,5 @@ export default async function AdminLayout({children}) {
     }
     
     
-    return(
-
-        <div className="flex flex-1">
-            <AdminSidebar />
-            {children}
-        </div>
-    );
+    return children;
 }

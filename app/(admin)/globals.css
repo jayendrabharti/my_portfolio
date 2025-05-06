@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+* {
+    box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-button{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    *::-webkit-scrollbar {
+        display: none;
+    }
+    * {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}
+
+.ql-toolbar{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  @apply bg-white dark:bg-black
+}
+.ql-editor{
+  min-height: 200px;
+}
+
+.ql-container.ql-snow.ql-disabled{
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.ql-disabled>{
+    border: none;
+    padding: 0;
+    margin: 0;
+    @apply text-[16px]
+}
+.ql-disabled .ql-ui{
+    @apply hidden
+}
+
+.ql-align-center {
+    text-align: center;
+  }
+  
+  .ql-align-right {
+    text-align: right;
+  }
+  
+  .ql-align-left {
+    text-align: left;
+  }
+  
+  .ql-align-justify {
+    text-align: justify;
+  }
+  
+  .ql-editor img {
+    display: block;
+  }
+  
+  .ql-video{
+    @apply w-full px-4 aspect-video
+  }

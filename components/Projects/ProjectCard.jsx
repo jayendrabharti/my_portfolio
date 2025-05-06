@@ -84,10 +84,11 @@ export default function ProjectCard({ project,deleteProject ,admin = false,class
               onClick={()=>deleteProject(project.slug)}
               className={cn(
                 'flex flex-row items-center',
-                'bg-zinc-200 dark:bg-zinc-800',
-                `hover:bg-zinc-100 dark:hover:bg-zinc-950`,
+                'bg-red-500',
+                `hover:bg-red-200`,
                 'text-black dark:text-white text-sm',
-                'py-1 px-2 rounded-lg border-4 border-zinc-200 dark:border-zinc-800'
+                'py-1 px-2 rounded-lg',
+                "duration-100 transition-all active:scale-90"
               )}
             >
               Delete
@@ -100,7 +101,8 @@ export default function ProjectCard({ project,deleteProject ,admin = false,class
                 'bg-zinc-200 dark:bg-zinc-800',
                 `hover:bg-zinc-100 dark:hover:bg-zinc-950`,
                 'text-black dark:text-white text-sm',
-                'py-1 px-2 rounded-lg border-4 border-zinc-200 dark:border-zinc-800'
+                'py-1 px-2 rounded-lg',
+                "duration-100 transition-all active:scale-90"
               )}
               >
               Edit
