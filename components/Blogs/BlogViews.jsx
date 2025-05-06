@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 export default function BlogViews({ slug, increment=false}) {
-    const [views,setViews] = useState("---");
+    const [views,setViews] = useState(null);
     const [error,setError] = useState(null);
     
     useEffect(()=>{
@@ -29,6 +29,6 @@ export default function BlogViews({ slug, increment=false}) {
         get();
     },[])
     
-    if(error)return "Error";
-    return views;
+    if(error)return <span>Error</span>;
+    return <span>{views}</span>;
 }

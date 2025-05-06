@@ -4,7 +4,7 @@ import "quill/dist/quill.core.css";
 import "quill/dist/quill.bubble.css";
 
 import { cn } from "@/libs/cn";
-import { ArrowLeftIcon, EyeIcon } from "lucide-react";
+import { ArrowLeftIcon, CalendarDaysIcon, EyeIcon } from "lucide-react";
 import { GetBlogBySlug, GetBlogs } from "@/actions/blogs";
 import Image from "next/image";
 import { formatTimestamp } from "@/utils/common";
@@ -55,7 +55,12 @@ export default async function Blog({params}) {
           </Link> 
           <span 
             className="font-semibold"
-          >Jayendra Bharti / {formatTimestamp(blog.datetime,2)}</span>
+          >
+            Jayendra Bharti /&nbsp;
+            <span className="w-max inline-block">
+              {formatTimestamp(blog.datetime,2)}
+            </span>
+          </span>
 
           <EyeIcon className="ml-auto"/>
           <span className="text-zinc-500">
