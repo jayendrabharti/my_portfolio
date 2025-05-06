@@ -28,12 +28,12 @@ export async function GetBlogBySlug(slug) {
     }
 }
 
-export async function UpdateBlogBySlug(slug, values,revalidatePath=true) {
+export async function UpdateBlogBySlug(slug, values,revalidate=true) {
     try {
         await connectToDB();
         const blog = await Blog.findOneAndUpdate({ slug: slug },values);
         
-        if(revalidatePath){
+        if(revalidate){
             revalidatePath(`/`);
             revalidatePath(`/blogs`);
             revalidatePath(`/blogs/${slug}`);
