@@ -9,7 +9,7 @@ export async function POST(req, { params }) {
     const { blog } = JSON.parse(await GetBlogBySlug(blogSlug));
 
     if(increment){
-        await UpdateBlogBySlug(blogSlug,{ views: blog.views + 1 });
+        UpdateBlogBySlug(blogSlug,{ views: blog.views + 1 }, false);
     }
 
     return NextResponse.json({ views: blog.views });
