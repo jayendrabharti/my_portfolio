@@ -13,8 +13,9 @@ export default function BlogCard({ blog, deleteBlog ,admin = false, className=""
 const Card = ()=>(
   <div
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900",
-        "transition-all duration-300 hover:shadow-md dark:hover:shadow-zinc-800/30",
+        "h-full group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900",
+        "transition-all duration-300 hover:shadow-2xl dark:hover:shadow-zinc-800",
+        "hover:scale-105",
         className,
         !admin && "cursor-pointer"
       )}

@@ -3,6 +3,7 @@ import { cn } from '@/libs/cn';
 import Link from 'next/link';
 import Image from 'next/image';
 import Reveal from '../animations/Reveal';
+import { BsGithub } from 'react-icons/bs';
 
 export default function ProjectCard({ project,deleteProject ,admin = false,className=""}){
 
@@ -11,8 +12,9 @@ export default function ProjectCard({ project,deleteProject ,admin = false,class
     <div 
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900",
-        "transition-all duration-300 hover:shadow-md dark:hover:shadow-zinc-800/30",
-        className
+        "transition-all duration-300 hover:shadow-2xl dark:hover:shadow-zinc-800",
+        "hover:scale-105",
+        className,
       )}
     >
       
@@ -58,9 +60,9 @@ export default function ProjectCard({ project,deleteProject ,admin = false,class
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm font-medium text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-400 transition-colors"
+            className="inline-flex items-center gap-1 text-sm font-medium text-zinc-800 dark:text-zinc-200 hover:text-primary transition-all border-2 border-zinc-500 hover:border-primary rounded-full px-2 py-1"
           >
-            <Github className="h-4 w-4" />
+            <BsGithub className="h-4 w-4" />
             <span>Code</span>
           </a>
           
@@ -68,7 +70,7 @@ export default function ProjectCard({ project,deleteProject ,admin = false,class
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm font-medium text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-400 transition-colors ml-auto"
+            className="inline-flex items-center gap-1 text-sm font-medium text-zinc-800 dark:text-zinc-200 hover:text-primary transition-all ml-auto border-2 border-zinc-500 hover:border-primary rounded-full px-2 py-1"
           >
             <ExternalLink className="h-4 w-4" />
             <span>Live Demo</span>

@@ -2,6 +2,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-primary: oklch(54.6% 0.245 262.881);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -33,12 +37,22 @@
     }
 }
 
+.ql-toolbar{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  @apply bg-white dark:bg-black
+}
+.ql-editor{
+  min-height: 200px;
+}
+
 .ql-container.ql-snow.ql-disabled{
     border: none;
     padding: 0;
     margin: 0;
 }
-.ql-disabled>.ql-editor{
+.ql-disabled>{
     border: none;
     padding: 0;
     margin: 0;

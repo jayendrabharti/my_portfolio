@@ -6,7 +6,8 @@ export default function RevealHero({
   children,
   width = "fit-content",
   className = "",
-  bgColor = "bg-indigo-600",
+  // bgColor = "bg-transparent",
+  bgColor = "bg-primary",
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -47,7 +48,7 @@ export default function RevealHero({
         initial="hidden"
         animate={contentControls}
         transition={{ duration: 0.6, delay: 0 }}
-        className="relative z-10"
+        className="relative z-10 py-2"
       >
         {children}
       </motion.div>

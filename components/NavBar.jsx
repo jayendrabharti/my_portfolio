@@ -72,9 +72,9 @@ export default function NavBar() {
                 className={cn(
                   "px-1.5 py-1 rounded-md",
                   "transition-colors duration-200",
-                  "hover:bg-white dark:hover:bg-black font-semibold",
+                  " font-semibold",
                   "flex flex-row items-center",
-                  active ? "text-cyan-500" : "text-zinc-400 hover:text-cyan-700",
+                  active ? "text-primary" : "text-zinc-400 hover:text-primary/60",
                   "w-full md:w-max md:text-sm text-md"
                 )}
                 onClick={()=>setExpanded(false)}

@@ -24,7 +24,7 @@ export default async function HeroSection() {
                     <span
                         className={cn(
                             "inline-block w-max bg-clip-text text-transparent",
-                            "bg-gradient-to-r from-indigo-600 to-cyan-400 bg-clip-text text-transparent"
+                            "bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent"
                         )}
                     >JAYENDRA BHARTI</span>
                 </span>
@@ -44,7 +44,7 @@ export default async function HeroSection() {
                 <div className="mt-6 flex justify-start gap-4">
                     <Link
                         href={'/contact'} 
-                        className="px-4 py-2 bg-indigo-600 text-white rounded-full flex flex-row items-center font-bold transition-all duration-100 active:scale-75"
+                        className="px-4 py-2 bg-primary hover:bg-primary/80 text-white rounded-full flex flex-row items-center font-bold transition-all duration-100 active:scale-75"
                         >
                         Contact Me
                     </Link>

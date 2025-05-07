@@ -33,7 +33,7 @@ export default function ScrollToTop({mainRef}){
         if(isVisible)scrollToTop();
       }}
       className={cn(
-        `fixed z-[1000000] bottom-6 right-6 p-2 rounded-full bg-zinc-600  text-white shadow-lg duration-200 transition-all`,
+        `fixed z-[1000000] bottom-6 right-6 p-2 rounded-full bg-zinc-600  text-white shadow-lg duration-200 transition-all cursor-pointer`,
         isVisible?"opacity-100":"opacity-0"
       )}
     >

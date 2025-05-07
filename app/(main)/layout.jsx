@@ -1,7 +1,6 @@
-import "./globals.css";
+import "../globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import NextAuthSessionProviders from "@/providers/NextAuthSessionProviders";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { cn } from "@/libs/cn";
@@ -28,7 +27,6 @@ return (
 <html lang="en" suppressHydrationWarning>
 <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 
-<NextAuthSessionProviders>
 <ThemeProvider>
 <ReactBalancerProvider>
 
@@ -47,7 +45,6 @@ return (
 
 </ReactBalancerProvider>
 </ThemeProvider>
-</NextAuthSessionProviders>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
-import { AtSign, FacebookIcon, InstagramIcon, Phone, TwitterIcon } from 'lucide-react';
+import { AtSign, FacebookIcon, InstagramIcon, LinkedinIcon, Phone, PhoneIcon, TwitterIcon } from 'lucide-react';
 import { HomeIcon, InfoIcon, PencilRulerIcon, ScrollTextIcon} from "lucide-react";
-import { BsGithub, BsTwitterX } from "react-icons/bs";
+import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsTwitterX } from "react-icons/bs";
 import { anurati } from '@/utils/fonts';
 import { cn } from '@/libs/cn';
 import Link from 'next/link';
@@ -10,17 +10,19 @@ export const QuickLinksList = [
     { name: "About", href: "/aboutme", icon: InfoIcon },
     { name: "Projects", href: "/projects", icon: PencilRulerIcon },
     { name: "Blogs", href: "/blogs", icon: ScrollTextIcon },
+    { name: "Contact Me", href: "/contact", icon: PhoneIcon },
   ];
 
 const SocialsLinkList = [
     {name:"Mail", href:"mailto:jay.bharti2804@gmail.com", icon: AtSign},
-    {name:"Instagram", href:"https://www.instagram.com/jayendra.bharti", icon: InstagramIcon},
-    {name:"Twitter", href:"https://x.com/Jayendra_Bharti", icon: TwitterIcon},
-    {name:"Facebook", href:"", icon: FacebookIcon},
+    {name:"Instagram", href:"https://www.instagram.com/jayendra.bharti", icon: BsInstagram},
+    {name:"X.com / Twitter", href:"https://x.com/Jayendra_Bharti", icon: BsTwitterX},
+    {name:"Facebook", href:"", icon: BsFacebook},
 ]
 
 const TechSitesLinkList = [
     {name:"Github", href:"https://github.com/jayendrabharti", icon: BsGithub},
+    {name:"LinkedIn", href:"https://www.linkedin.com/in/jayendrabharti/", icon: BsLinkedin},
 ]
 
 export default async function Footer() {
@@ -47,7 +49,10 @@ export default async function Footer() {
                             <ul className="text-zinc-700 dark:text-zinc-400">
                                 {QuickLinksList.map((link,index)=>(
                                     <li key={index} className="mb-2 hover:underline hover:text-black hover:dark:text-white">
-                                        <Link href={link.href} className='flex flex-row items-center gap-2'>
+                                        <Link 
+                                            href={link.href} 
+                                            className='flex flex-row items-center gap-2 hover:text-primary duration-300 transition-all font-bold'
+                                        >
                                             <link.icon size={20}/>
                                             {link.name}
                                         </Link>
@@ -63,7 +68,7 @@ export default async function Footer() {
                                     <li key={index} className="mb-2 hover:underline hover:text-black hover:dark:text-white">
                                         <Link 
                                             href={link.href} 
-                                            className='flex flex-row items-center gap-2'
+                                            className='flex flex-row items-center gap-2 hover:text-primary duration-300 transition-all font-bold'
                                             target='_blank'
                                         >
                                             <link.icon size={20}/>
@@ -81,7 +86,7 @@ export default async function Footer() {
                                     <li key={index} className="mb-2 hover:underline hover:text-black hover:dark:text-white">
                                         <Link 
                                             href={link.href} 
-                                            className='flex flex-row items-center gap-2'
+                                            className='flex flex-row items-center gap-2 hover:text-primary duration-300 transition-all font-bold'
                                             target='_blank'
                                         >
                                             <link.icon size={20}/>
