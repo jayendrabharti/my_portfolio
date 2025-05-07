@@ -9,8 +9,8 @@ import { GetBlogBySlug, GetBlogs } from "@/actions/blogs";
 import Image from "next/image";
 import { formatTimestamp } from "@/utils/common";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import BlogViews from "@/components/Blogs/BlogViews";
+import NotFound from "../../not-found";
 
 export async function generateStaticParams() {
   const { blogs } = JSON.parse(await GetBlogs());
@@ -24,7 +24,7 @@ export default async function Blog({params}) {
   const { blogSlug } = await params;
   const data = JSON.parse(await GetBlogBySlug(blogSlug));
 
-  if(!data.success)return notFound();
+  if(!data.success)return NotFound();
 
   const blog = {...data.blog, datetime: new Date(data.blog.datetime).toISOString().split('T')[0].toString()}
 

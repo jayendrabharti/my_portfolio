@@ -21,7 +21,7 @@ export async function GetBlogBySlug(slug) {
         
         const blog = await Blog.findOne({ slug: slug });
 
-        return JSON.stringify({ success: true, blog: blog });
+        return JSON.stringify({ success: !!blog, blog: blog });
 
     } catch (error) {
         return JSON.stringify({ success: false, error: error.message });
