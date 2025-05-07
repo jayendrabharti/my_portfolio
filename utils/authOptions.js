@@ -9,8 +9,14 @@ export const authOptions = {
   ],
   callbacks: {
     async session({ session }) {
-      session.user.isAdmin = session?.user?.email === process.env.ADMIN_EMAIL;
+      session.user.isAdmin = true;
       return session;
+    },
+    async signIn({ user }) {
+      if(user.email === process.env.ADMIN_EMAIL){
+        return true;
+      }
+      return '/unauthorized';
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
