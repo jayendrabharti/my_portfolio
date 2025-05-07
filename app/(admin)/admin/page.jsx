@@ -1,12 +1,14 @@
 import Blog from "@/models/blog";
 import Message from "@/models/message";
 import Project from "@/models/project";
+import { connectToDB } from "@/utils/database";
 import Link from "next/link"
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
 
+    await connectToDB();
     const blogCount = await Blog.countDocuments();
     const projectCount = await Project.countDocuments();
     const messageCount = await Message.countDocuments();
