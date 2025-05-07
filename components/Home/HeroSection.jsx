@@ -4,6 +4,7 @@ import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 import RevealHero from "../animations/RevealHero";
 import Reveal from "../animations/Reveal";
+import { BsGithub } from "react-icons/bs";
 
 export default async function HeroSection() {
 
@@ -66,14 +67,23 @@ export default async function HeroSection() {
             </div>
 
             <Reveal className="order-1 md:order-2">
-                <Link href={`https://github.com/${username}`}>
-                <Image
-                    src={`https://github.com/${username}.png`}
-                    alt={username}
-                    width={150}
-                    height={150}
-                    className={"cursor-pointer w-20 md:w-40 ml-1 md:ml-auto rounded-xl"}
-                />
+                <Link 
+                    href={`https://github.com/${username}`} 
+                    className="w-max block relative rounded-2xl aspect-square overflow-hidden transition-all duration-200 hover:rotate-x-12 hover:-rotate-y-12"
+                    target="_blank"
+                >
+                    <div 
+                        className="absolute top-0 left-0 w-full h-full bg-black/50 opacity-0 hover:opacity-100 transition-all duration-200 flex flex-col justify-center items-center"
+                    >
+                        <BsGithub/>
+                    </div>
+                    <Image  
+                        src={`https://github.com/${username}.png`}
+                        alt={username}
+                        width={150}
+                        height={150}
+                        className={"cursor-pointer w-30 md:w-40"}
+                    />
                 </Link>
             </Reveal>
 
