@@ -1,7 +1,5 @@
-import "highlight.js/styles/default.css";
+import "highlight.js/styles/atom-one-dark.css";
 import "quill/dist/quill.snow.css";
-import "quill/dist/quill.core.css";
-import "quill/dist/quill.bubble.css";
 
 import { cn } from "@/libs/cn";
 import { ArrowLeftIcon, CalendarDaysIcon, EyeIcon } from "lucide-react";
@@ -11,6 +9,14 @@ import { formatTimestamp } from "@/utils/common";
 import Link from "next/link";
 import BlogViews from "@/components/Blogs/BlogViews";
 import NotFound from "../../not-found";
+import { Merriweather } from 'next/font/google';
+
+
+const merriweather = Merriweather({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-serif',
+});
 
 export async function generateStaticParams() {
   const { blogs } = JSON.parse(await GetBlogs());
@@ -94,7 +100,7 @@ export default async function Blog({params}) {
       <div className="container w-full border-t-2 border-zinc-300 dark:border-zinc-700 pt-6">
         <div className="ql-container ql-snow ql-disabled">
           <div 
-            className="ql-editor" 
+            className={`ql-editor ${merriweather.className}`} 
             dangerouslySetInnerHTML={{__html: blog.displayContent}}
           />
         </div>

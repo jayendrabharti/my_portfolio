@@ -1,13 +1,13 @@
 "use client";
 
-import { Code, LoaderCircleIcon } from "lucide-react";
-import BlogForm from "@/components/Admin/BlogForm";
+import { LoaderCircleIcon } from "lucide-react";
 import { GetBlogBySlug, UpdateBlogBySlug } from "@/actions/blogs";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import BlogEditor from "@/components/Blogs/BlogEditor";
+import { cn } from '@/libs/cn';
 
-export default function Editor() {
+export default function EditBlog() {
 
     const { blogSlug } = useParams();
     
@@ -49,7 +49,9 @@ export default function Editor() {
 
   if (loading)
     return (
-      <div className="w-full h-full flex justify-center items-center">
+      <div className={cn(
+        "w-full h-full flex justify-center items-center",
+      )}>
         <LoaderCircleIcon className="animate-spin text-black dark:text-white size-20" />
       </div>
     );
@@ -70,11 +72,11 @@ export default function Editor() {
         </div>
 
         <div className="max-w-3xl mx-auto text-black dark:text-white">
-        <BlogEditor 
-            content={content}
-            setContent={setContent}
-            setDisplayContent={setDisplayContent}
-        />
+          <BlogEditor 
+              content={content}
+              setContent={setContent}
+              setDisplayContent={setDisplayContent}
+          />
         </div>
     </div>
   );

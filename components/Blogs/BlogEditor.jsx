@@ -1,35 +1,58 @@
 "use client";
 
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 import Quill from 'quill';
+import "highlight.js/styles/atom-one-dark.css";
 import "quill/dist/quill.snow.css";
-import "quill/dist/quill.core.css";
-import "quill/dist/quill.bubble.css";
- 
+import { Merriweather } from 'next/font/google';
+import { useState, useEffect, useCallback } from 'react';
 
-import { useRef, useState, useEffect, useCallback } from 'react';
+const merriweather = Merriweather({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-serif',
+});
 
 const TOOLBAR_OPTIONS = [
-  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-  ['blockquote', 'code-block'],
-  ['link', 'image', 'video', 'formula'],
-
-  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-  [{ 'direction': 'rtl' }],                         // text direction
-
-  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
   [{ 'font': [] }],
+  
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  
+  ['blockquote', 'code-block'],
+  
+  
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+  
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+  
+  [{ 'direction': 'rtl' }],                         // text direction
+  
+  // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  
   [{ 'align': [] }],
-
-  ['clean']                                         // remove formatting button
+  
+  ['link', 'image', 'video', 'formula'],
+  
+  ['clean'],                                     // remove formatting button
 ];
+
+const options = {
+  theme: "snow",
+  placeholder: 'Write your blog...',
+  readOnly: true,
+  modules: { 
+    syntax: { hljs },
+    toolbar: TOOLBAR_OPTIONS 
+  },
+}
 
 export default function BlogEditor({content,setContent,setDisplayContent}){
   const [quill, setQuill] = useState();
@@ -45,25 +68,15 @@ export default function BlogEditor({content,setContent,setDisplayContent}){
     };
 
     quill.on('text-change', handleTextChange);
-    return () => {
-      quill.off('text-change', handleTextChange);
-    };
+    return () => quill.off('text-change', handleTextChange);
   }, [quill]);
 
   const containerRef = useCallback((container)=>{
     if(!container)return;
-  
     container.innerHTML = "";
     const editor = document.createElement('div');
     container.append(editor);
-    const q = new Quill(editor, {
-      theme: "snow",
-      placeholder: 'Write your blog...',
-      modules: { 
-        syntax: { hljs },
-        toolbar: TOOLBAR_OPTIONS 
-      },
-    });
+    const q = new Quill(editor, options);
     q.disable();
     q.setText("Loading...");
     setQuill(q)
@@ -76,9 +89,10 @@ export default function BlogEditor({content,setContent,setDisplayContent}){
   return(
     <div 
       id='container'
-      className='container'
+      className={`container ${merriweather.className}`}
       ref={containerRef}
-    ></div>
+    >
+    </div>
   )
 
 }

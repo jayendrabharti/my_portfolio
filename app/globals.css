@@ -37,32 +37,46 @@
     }
 }
 
-.ql-toolbar{
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  @apply bg-white dark:bg-black
-}
-.ql-editor{
-  min-height: 200px;
-}
+/* ##################################################### */
 
-.ql-container.ql-snow.ql-disabled{
+/* Toolbar */
+.ql-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border: none;
+    @apply bg-white dark:bg-black;
+  }
+  
+  /* Editor */
+  .ql-editor {
+    min-height: 400px;
+    padding: 1.5rem;
+    font-size: 18px;
+    font-family: 'Merriweather', serif;
+    line-height: 1.8;
+  }
+  
+  /* Disabled state */
+  .ql-container.ql-snow.ql-disabled {
     border: none;
     padding: 0;
     margin: 0;
-}
-.ql-disabled>{
+  }
+  
+  .ql-disabled {
     border: none;
     padding: 0;
     margin: 0;
-    @apply text-[16px]
-}
-.ql-disabled .ql-ui{
-    @apply hidden
-}
-
-.ql-align-center {
+    font-size: 16px;
+  }
+  
+  .ql-disabled .ql-ui {
+    display: none;
+  }
+  
+  /* Alignment */
+  .ql-align-center {
     text-align: center;
   }
   
@@ -78,10 +92,115 @@
     text-align: justify;
   }
   
+  /* Headers */
+  .ql-editor h1 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    margin: 2rem 0 1rem;
+  }
+  
+  .ql-editor h2 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin: 1.75rem 0 1rem;
+  }
+  
+  .ql-editor h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1.5rem 0 1rem;
+  }
+  
+  .ql-editor h4, .ql-editor h5, .ql-editor h6 {
+    font-weight: 500;
+    margin: 1.25rem 0 0.75rem;
+  }
+  
+  /* Paragraphs and Text */
+  .ql-editor p {
+    margin: 1rem 0;
+  }
+  
+  /* Images */
   .ql-editor img {
+    display: block;
+    max-width: 100%;
+    margin: 1.5rem auto;
+  }
+  
+  /* Videos */
+  .ql-editor .ql-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    margin: 2rem 0;
+    padding: 0;
     display: block;
   }
   
-  .ql-video{
-    @apply w-full px-4 aspect-video
+  /* Lists */
+  .ql-editor ul,
+  .ql-editor ol {
+    margin: 1rem 0 1rem 2rem;
+    padding-left: 1rem;
+  }
+  
+  .ql-editor li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  
+  /* Blockquote */
+  .ql-editor blockquote {
+    border-left: 4px solid #ccc;
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #555;
+    @apply dark:border-gray-600 dark:text-gray-300;
+  }
+  
+  /* Code blocks */
+  .ql-editor pre {
+    background: #f4f4f4;
+    color: #333;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    @apply dark:bg-gray-800 dark:text-gray-100;
+  }
+  
+  /* Inline code */
+  .ql-editor code {
+    background-color: #eee;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.95em;
+    @apply dark:bg-gray-700 dark:text-white;
+  }
+  
+  /* Links */
+  .ql-editor a {
+    color: #0070f3;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  
+  .ql-editor a:hover {
+    color: #0050c3;
+  }
+  
+  /* Horizontal Rule */
+  .ql-editor hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 2rem 0;
+  }
+  
+  /* Embed spacing */
+  .ql-editor iframe {
+    display: block;
+    max-width: 100%;
+    margin: 1.5rem auto;
   }
