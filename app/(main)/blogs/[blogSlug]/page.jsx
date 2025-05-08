@@ -38,14 +38,14 @@ export default async function Blog({params}) {
     <section
         id="blog-section"
         className={cn(
-            "flex flex-col gap-6 p-10 mx-auto max-w-4xl relative",
+            "flex flex-col gap-6 p-5 md:p-10 mx-auto contain-content max-w-4xl relative",
         )}
     >
       <Link href={`/blogs`} className="flex flex-row items-center gap-1 ml-auto bg-zinc-300 dark:bg-zinc-700 px-2 py-1 rounded-full hover:ring-4 ring-zinc-500 active:scale-75 transition-all duration-150">
         <ArrowLeftIcon className="size-5"/>
         Blogs
       </Link>
-      <span className="text-3xl md:text-5xl font-extrabold">
+      <span className="text-2xl md:text-5xl font-extrabold">
         {blog.title}
       </span>
 
@@ -56,7 +56,7 @@ export default async function Blog({params}) {
             alt={"jayendrabharti"}
             width={150}
             height={150}
-            className={"cursor-pointer size-6 rounded-full"}
+            className={"cursor-pointer aspect-square w-10 rounded-full"}
           />
           </Link> 
           <span 

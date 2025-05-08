@@ -51,7 +51,7 @@ export default async function Footer() {
                                     <li key={index} className="mb-2 hover:underline hover:text-black hover:dark:text-white">
                                         <Link 
                                             href={link.href} 
-                                            className='flex flex-row items-center gap-2 hover:text-primary duration-300 transition-all font-bold'
+                                            className='flex flex-row items-center gap-2 hover:text-primary duration-300 transition-all font-bold w-max'
                                         >
                                             <link.icon size={20}/>
                                             {link.name}
@@ -68,7 +68,7 @@ export default async function Footer() {
                                     <li key={index} className="mb-2 hover:underline hover:text-black hover:dark:text-white">
                                         <Link 
                                             href={link.href} 
-                                            className='flex flex-row items-center gap-2 hover:text-primary duration-300 transition-all font-bold'
+                                            className='flex flex-row items-center gap-2 hover:text-primary duration-300 transition-all font-bold w-max'
                                             target='_blank'
                                         >
                                             <link.icon size={20}/>
@@ -86,7 +86,7 @@ export default async function Footer() {
                                     <li key={index} className="mb-2 hover:underline hover:text-black hover:dark:text-white">
                                         <Link 
                                             href={link.href} 
-                                            className='flex flex-row items-center gap-2 hover:text-primary duration-300 transition-all font-bold'
+                                            className='flex flex-row items-center gap-2 hover:text-primary duration-300 transition-all font-bold w-max'
                                             target='_blank'
                                         >
                                             <link.icon size={20}/>
