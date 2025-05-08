@@ -31,8 +31,8 @@ export default function Messages() {
 
         const data = JSON.parse(await DeleteMessageById(id));
         if (data.success) {
-            setMessages((prev) => prev.filter((m) => m._id !== id));
             alert("Deleted Successfully");
+            setMessages((prev) => prev.filter((m) => m._id !== id));
         } else {
             alert("Not able to delete!! Refresh and try again!!");
         }

@@ -2,7 +2,6 @@ import { EyeIcon, PencilIcon, StarIcon, Trash2Icon } from 'lucide-react';
 import { cn } from '@/libs/cn';
 import Link from 'next/link';
 import Image from 'next/image';
-import { formatDistanceToNow } from 'date-fns';
 import { formatTimestamp } from '@/utils/common';
 import Reveal from '../animations/Reveal';
 import BlogViews from './BlogViews';
@@ -11,6 +10,7 @@ export default function BlogCard({ blog, deleteBlog ,admin = false, className=""
 
   
 const Card = ()=>(
+  <Reveal>
   <div
       className={cn(
         "h-full group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900",
@@ -126,16 +126,15 @@ const Card = ()=>(
       }
 
     </div>
+    </Reveal>
 )
 
   if(admin)return <Card/>;
   
   return (
-    <Reveal>
-    <Link href={admin?`/admin/blogs/${blog.slug}`:`/blogs/${blog.slug}`}>
+    <Link href={`/blogs/${blog.slug}`}>
       <Card/>
     </Link>
-    </Reveal>
   );
 
 

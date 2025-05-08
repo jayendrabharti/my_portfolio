@@ -16,7 +16,8 @@ const merriweather = Merriweather({
 const TOOLBAR_OPTIONS = [
   [{ 'font': [] }],
   
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
   
   ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
   
@@ -35,7 +36,6 @@ const TOOLBAR_OPTIONS = [
   
   [{ 'direction': 'rtl' }],                         // text direction
   
-  // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
   
   [{ 'align': [] }],
   

@@ -42,7 +42,7 @@ export default function Projects() {
             <div className="">
                 <Link
                     href={'/admin/projects/new'}
-                    className="flex flex-row items-center bg-zinc-300 dark:bg-zinc-700 text-black dark:text-white w-max p-2 rounded-lg ml-auto font-bold transition-all duration-200 active:scale-75"
+                    className="flex flex-row items-center bg-zinc-300 dark:bg-zinc-700 text-black dark:text-white w-max p-2 rounded-lg ml-auto font-bold transition-all duration-200 active:scale-75 mb-3"
                 >
                     <PlusIcon/>
                     Add Project
