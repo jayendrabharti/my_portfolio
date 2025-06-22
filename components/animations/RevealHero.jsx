@@ -18,7 +18,7 @@ export default function RevealHero({
     if (isInView) {
       slideControls.start("visible");
       contentControls.start("visible");
-    }else{
+    } else {
       slideControls.set("hidden");
       contentControls.set("hidden");
     }
@@ -42,8 +42,8 @@ export default function RevealHero({
       />
       <motion.div
         variants={{
-          hidden: { opacity: 0, left: "100%" },
-          visible: { opacity: 1, left: 0 },
+          hidden: { opacity: 0, y: 100 },
+          visible: { opacity: 1, y: 0 },
         }}
         initial="hidden"
         animate={contentControls}
